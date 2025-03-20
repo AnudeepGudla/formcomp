@@ -1,0 +1,18 @@
+<sly data-sly-use.form="com.example.core.models.FormModel">
+  <form method="POST" action="#" id="dynamicForm" novalidate>
+    <div data-sly-list.question="${form.questions}">
+      <div class="form-field">
+        <label for="${question.id}">${question.label}</label>
+        <input
+          id="${question.id}"
+          name="${question.name}"
+          type="${question.type}"
+          required="${question.required ? 'required' : ''}"
+          pattern="${question.pattern || ''}"
+        />
+        <span class="error-message" id="${question.id}-error" aria-live="polite"></span>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</sly>

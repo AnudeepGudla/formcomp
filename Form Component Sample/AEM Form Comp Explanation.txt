@@ -1,0 +1,91 @@
+AEM Component Structure
+
+bundles - Java Classes
+content - AEM & front end files
+
+AEM Component Structure: 
+
+The AEM component will include a dialog for authors to configure the form, a client library for JavaScript and CSS, and the HTL script to render the form.
+
+HTL Code: The HTL script will render the form dynamically based on the fetched questions.
+
+Client Library: The client library will include the default.js script we created earlier.
+
+Dialog: A dialog will allow authors to configure the form (e.g., endpoint URLs).
+
+AEM Component Structure
+
+formcomp/
+├── _cq_dialog/
+│   └── .content.xml
+├── formcomp.html (HTL)
+├── clientlibs/
+│   ├── css.txt
+│   ├── js.txt
+│   └── default.js
+└── _cq_editConfig.xmlSteps
+
+
+
+
+1. formcomp.html (HTL Script)
+This HTL script will render the form dynamically. It uses the data-sly-use directive to fetch questions from the REST endpoint and render the form.
+
+2. FormCompModel.java (Sling Model)
+This Sling Model fetches the questions from the REST endpoint and makes them available to the HTL script.
+
+
+3. dialog.xml (Component Dialog)
+This dialog allows authors to configure the REST endpoint for fetching questions.
+
+4. clientlibs (Client Library)
+The client library includes the default.js script and any necessary CSS.
+
+5. _cq_editConfig.xml (Edit Configuration)
+This file enables the component to be editable in AEM.
+
+6. styles.css (Optional)
+Add any necessary CSS for styling the form.
+
+Summary
+HTL Script: Renders the form dynamically using data fetched from the REST endpoint.
+
+Sling Model: Fetches questions from the REST endpoint and provides them to the HTL script.
+
+Dialog: Allows authors to configure the REST endpoint.
+
+Client Library: Includes the JavaScript and CSS for the form.
+
+Edit Configuration: Makes the component editable in AEM.
+
+
+Default JS Explanation
+
+Steps
+
+Step 1: Fetch Questions
+We will use the Fetch API to retrieve the questions from the provided endpoint.
+
+Step 2: Render the Form
+We will dynamically generate the form based on the fetched questions. The form will include proper ARIA labels and validation messages.
+
+Step 3: Submit Results
+We will handle form submission by sending the data to the specified endpoint using a POST request.
+
+Explanation:
+Fetching Questions: The script fetches the questions from the REST endpoint using the Fetch API.
+
+Rendering the Form: The form is dynamically generated based on the fetched questions. Each input field is created with appropriate attributes and event listeners for validation.
+
+Validation: The validateInput function uses the Constraint Validation API to validate inputs and display error messages with proper ARIA attributes.
+
+Form Submission: The handleFormSubmit function validates the form, prepares the submission data, and sends it to the specified endpoint using a POST request.
+
+Accessibility Notes:
+The form uses proper ARIA attributes (aria-invalid, aria-describedby) to ensure screen readers can announce validation errors.
+
+Labels are associated with their respective inputs using the for attribute.
+
+Error messages are dynamically inserted into the DOM and linked to the corresponding inputs.
+
+This implementation ensures that the form is accessible, validates user input, and submits data correctly.
